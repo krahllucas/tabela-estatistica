@@ -1,3 +1,3 @@
-Trabalho de Estatistica 
+# tabela-estatistica
 
-Unipar - Sistemas de Informação - 4° Ano - 2017
+a [Sails](http://sailsjs.org) application
