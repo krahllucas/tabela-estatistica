@@ -8,7 +8,10 @@
 module.exports = {
 
   attributes: {
-
+  	nome:{
+  		type: 'string',
+  		required: true
+  	}
   }
 };
 

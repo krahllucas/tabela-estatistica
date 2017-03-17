@@ -8,7 +8,13 @@
 module.exports = {
 
   attributes: {
-
+  	valor:{
+  		type: 'float',
+  		required: true
+  	},
+  	tabela:{
+  		model: 'tabela'
+  	}
   }
 };
 
