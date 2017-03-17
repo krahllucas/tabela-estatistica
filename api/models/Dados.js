@@ -13,7 +13,8 @@ module.exports = {
   		required: true
   	},
   	tabela:{
-  		model: 'tabela'
+  		model: 'tabela',
+  		required: true
   	}
   }
 };
