@@ -97,6 +97,15 @@
                 </tr>
                 <%})%>
               </tbody>
+              <% if( intervaloOcultado ){%>
+                <tfoot>
+                  <tr>
+                    <td colspan="7">
+                      Há intervalos ocultos pois não há dados para se encaixar.
+                    </td>
+                  </tr>
+                </tfoot>
+              <%}%>
             </table>
           </div>
         </div>

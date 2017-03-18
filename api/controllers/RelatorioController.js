@@ -38,6 +38,7 @@ module.exports = {
 				var numeroTMP = menor;
 				var countfi = 0;
 				var FiAnterior = 0;
+				var intervaloOcultado = false;
 
 				var linhas = [];
 				for (var j = 0; j < i; j++) {
@@ -54,14 +55,18 @@ module.exports = {
 					var FiTmp = FiAnterior;
 					var FriTmp = (FiAnterior/n).toFixed(2) + " ("+FiAnterior+"/"+n+")";
 
-					linhas.push({i: j+1, intervalo: intervaloTmp, Xi: XiTmp, fi: fiTmp, fri: friTmp, Fi: FiTmp, Fri: FriTmp })
+					if(fiTmp > 0){
+						linhas.push({i: j+1, intervalo: intervaloTmp, Xi: XiTmp, fi: fiTmp, fri: friTmp, Fi: FiTmp, Fri: FriTmp })
+					}else{
+						intervaloOcultado = true
+					}
 					//Zera valores
 					numeroTMP += h;	
 					countfi = 0;
 				}
 				
 				console.log(linhas);
-				return res.view({ tabela: tabela, linhas: linhas, totalizadores: totalizadores });
+				return res.view({ tabela: tabela, linhas: linhas, totalizadores: totalizadores, intervaloOcultado: intervaloOcultado });
 			});
 		});
 	}
