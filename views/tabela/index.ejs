@@ -43,12 +43,44 @@
                     </button>
                   </td>
                   <td>
-                    <button id="editar<%= tabela.id %>" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+                    <button id="edit<%= tabela.id %>" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
                       <i class="material-icons">mode_edit</i>
                       <div class="mdl-tooltip mdl-tooltip--large" for="editar<%= tabela.id %>">
                         Editar tabela
                       </div>
                     </button>
+
+                    <dialog class="mdl-dialog" style="width: 40%; text-align: left;" id="dialog-edit-<%= tabela.id %>" >
+                      <form method="post" action="/tabela/update">
+                        <h4 class="mdl-dialog__title">Editar Tabela</h4>
+                        <div class="mdl-dialog__content">
+                          </br>
+                          <input hidden name="id" required value="<%= tabela.id %>">
+                          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 90%">
+                            <input class="mdl-textfield__input" type="text" id="sample3" name="nome" required value="<%= tabela.nome %>">
+                            <label class="mdl-textfield__label" for="sample3">Nome da tabela</label>
+                          </div>
+                        </div>
+                        <div class="mdl-dialog__actions">
+                          <button type="submit" class="mdl-button">Salvar</button>
+                          <button type="button" class="mdl-button close">Cancelar</button>
+                        </div>
+                      </form>
+                    </dialog>
+                    <script>
+                      var dialogedit<%= tabela.id %> = document.querySelector('#dialog-edit-<%= tabela.id %>');
+                      var editar<%= tabela.id %>Button = document.querySelector('#edit<%= tabela.id %>');
+                      if (! dialogedit<%= tabela.id %>.showModal) {
+                        dialogPolyfill.registerDialog(dialogedit<%= tabela.id %>);
+                      }
+                      editar<%= tabela.id %>Button.addEventListener('click', function() {
+                        dialogedit<%= tabela.id %>.showModal();
+                      });
+                      dialogedit<%= tabela.id %>.querySelector('.close').addEventListener('click', function() {
+                        dialogedit<%= tabela.id %>.close();
+                      });
+                    </script>
+
                   </td>
                   <td>
                     <button id="excluir<%= tabela.id %>" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
@@ -57,6 +89,33 @@
                         Excluir tabela
                       </div>
                     </button>
+
+                    <dialog class="mdl-dialog" style="text-align: left;" id="dialog-destroy-<%= tabela.id %>" >
+                      <form method="post" action="/tabela/destroy/<%= tabela.id %>">
+                        <h4 class="mdl-dialog__title">Excluir Tabela</h4>
+                        <div class="mdl-dialog__content">
+                          <p>Deseja realmente excluir está tabela?</p>
+                        </div>
+                        <div class="mdl-dialog__actions">
+                          <button type="submit" class="mdl-button">Sim</button>
+                          <button type="button" class="mdl-button close">Cancelar</button>
+                        </div>
+                      </form>
+                    </dialog>
+                    <script>
+                      var dialogdestroy<%= tabela.id %> = document.querySelector('#dialog-destroy-<%= tabela.id %>');
+                      var excluir<%= tabela.id %>Button = document.querySelector('#excluir<%= tabela.id %>');
+                      if (! dialogdestroy<%= tabela.id %>.showModal) {
+                        dialogPolyfill.registerDialog(dialogdestroy<%= tabela.id %>);
+                      }
+                      excluir<%= tabela.id %>Button.addEventListener('click', function() {
+                        dialogdestroy<%= tabela.id %>.showModal();
+                      });
+                      dialogdestroy<%= tabela.id %>.querySelector('.close').addEventListener('click', function() {
+                        dialogdestroy<%= tabela.id %>.close();
+                      });
+                    </script>
+
                   </td>
                 </tr>
                 <%})%>
@@ -69,7 +128,7 @@
   </div>
 </div>
 
-<dialog class="mdl-dialog" style="width: 40%" >
+<dialog class="mdl-dialog" style="width: 40%" id="dialog-add">
   <form method="post" action="/tabela/create">
     <h4 class="mdl-dialog__title">Adicionar Tabela</h4>
     <div class="mdl-dialog__content">
@@ -86,7 +145,7 @@
   </form>
 </dialog>
 <script>
-  var dialog = document.querySelector('dialog');
+  var dialog = document.querySelector('#dialog-add');
   var showDialogButton = document.querySelector('#show-dialog');
   if (! dialog.showModal) {
     dialogPolyfill.registerDialog(dialog);
