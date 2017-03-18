@@ -28,6 +28,12 @@ module.exports = {
 				console.log(n);
 				console.log(i);
 				console.log(h);
+				var totalizadores = ["Maior valor: "+ maior,
+									"Menor valor: "+ menor,
+									"AT: "+at,
+									"n: "+n,
+									"i: "+i,
+									"h: "+h]
 
 				var numeroTMP = menor;
 				var countfi = 0;
@@ -55,7 +61,7 @@ module.exports = {
 				}
 				
 				console.log(linhas);
-				return res.view({ tabela: tabela, linhas: linhas });
+				return res.view({ tabela: tabela, linhas: linhas, totalizadores: totalizadores });
 			});
 		});
 	}

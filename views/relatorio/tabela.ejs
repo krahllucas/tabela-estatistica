@@ -2,7 +2,7 @@
   <div class="docs-text-styling component-title">
     <table width="60%">
       <tr>
-        <td><h3>Tabela: <%=tabela.nome%> - Cadastro de Dados</h3></td>
+        <td><h3>Tabela: <%=tabela.nome%> - Relatório</h3></td>
         <td align="right">
           <button id="show-dialog" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
             <i class="material-icons">add</i>
@@ -13,8 +13,61 @@
           <!-- Large Tooltip -->
         </td>
       </tr>
+      <tr>
+        <td>
+          <!-- Simple list -->
+          <style>
+          .demo-list-item {
+            width: 300px;
+          }
+          </style>
+
+          <ul class="demo-list-item mdl-list">
+            <li class="mdl-list__item">
+              <span class="mdl-list__item-primary-content">
+                <%=totalizadores[0]%>
+              </span>
+            </li>
+            <li class="mdl-list__item">
+              <span class="mdl-list__item-primary-content">
+                <%=totalizadores[1]%>
+              </span>
+            </li>
+            <li class="mdl-list__item">
+              <span class="mdl-list__item-primary-content">
+                <%=totalizadores[2]%>
+              </span>
+            </li>
+          </ul>
+        </td>
+        <td>
+          <!-- Simple list -->
+          <style>
+          .demo-list-item {
+            width: 300px;
+          }
+          </style>
+
+          <ul class="demo-list-item mdl-list">
+            <li class="mdl-list__item">
+              <span class="mdl-list__item-primary-content">
+                <%=totalizadores[3]%>
+              </span>
+            </li>
+            <li class="mdl-list__item">
+              <span class="mdl-list__item-primary-content">
+                <%=totalizadores[4]%>
+              </span>
+            </li>
+            <li class="mdl-list__item">
+              <span class="mdl-list__item-primary-content">
+                <%=totalizadores[5]%>
+              </span>
+            </li>
+          </ul>
+        </td>
+      </tr>
     </table>
-    
   <div class="snippet-demos">
       <div class="snippet-demo-padding"></div>
         <div class="snippet-demo">
