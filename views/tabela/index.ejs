@@ -25,6 +25,7 @@
                   <th>ID</th>
                   <th>Nome</th>
                   <th>Dados</th>
+                  <th>Relatório</th>
                   <th>Editar</th>
                   <th>Excluir</th>
                 </tr>
@@ -39,6 +40,14 @@
                       <i class="material-icons">list</i>
                       <div class="mdl-tooltip mdl-tooltip--large" for="dados<%= tabela.id %>">
                         Visualizar dados
+                      </div>
+                    </a>
+                  </td>
+                  <td>
+                    <a id="relatorio<%= tabela.id %>" href="/relatorio/tabela/<%= tabela.id %>" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+                      <i class="material-icons">timeline</i>
+                      <div class="mdl-tooltip mdl-tooltip--large" for="relatorio<%= tabela.id %>">
+                        Visualizar relatório
                       </div>
                     </a>
                   </td>
