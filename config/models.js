@@ -29,5 +29,5 @@ module.exports.models = {
   ***************************************************************************/
    migrate: 'alter',
    autoCreatedAt: false,
-   autoCreatedAt: false
+   autoUpdatedAt: false
 };
