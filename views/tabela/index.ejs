@@ -35,12 +35,12 @@
                   <td><%= tabela.id %></td>
                   <td><%= tabela.nome %></td>
                   <td>
-                    <button id="dados<%= tabela.id %>" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+                    <a id="dados<%= tabela.id %>" href="/dados/tabela/<%= tabela.id %>" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
                       <i class="material-icons">list</i>
                       <div class="mdl-tooltip mdl-tooltip--large" for="dados<%= tabela.id %>">
                         Visualizar dados
                       </div>
-                    </button>
+                    </a>
                   </td>
                   <td>
                     <button id="edit<%= tabela.id %>" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">

@@ -1,0 +1,154 @@
+<div class="mdl-cell mdl-cell--12-col" align="center">
+  <div class="docs-text-styling component-title">
+    <table width="60%">
+      <tr>
+        <td><h3>Tabela: <%=tabela.nome%> - Cadastro de Dados</h3></td>
+        <td align="right">
+          <button id="show-dialog" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
+            <i class="material-icons">add</i>
+            <div class="mdl-tooltip mdl-tooltip--large" for="show-dialog">
+              Nova dado
+            </div>
+          </button>
+          <!-- Large Tooltip -->
+        </td>
+      </tr>
+    </table>
+    
+  <div class="snippet-demos">
+      <div class="snippet-demo-padding"></div>
+        <div class="snippet-demo">
+          <div class="snippet-demo-container demo-data-table demo-data-table__data-table">
+            <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp is-upgraded" data-upgraded=",MaterialDataTable" width="60%">
+              <thead>
+                <tr>
+                  <th>Valor</th>
+                  <th>Editar</th>
+                  <th>Excluir</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% _.each(dados, function(dado){ %>
+                <tr>
+                  <td><%= dado.valor %></td>
+                  <td>
+                    <button id="edit<%= dado.id %>" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+                      <i class="material-icons">mode_edit</i>
+                      <div class="mdl-tooltip mdl-tooltip--large" for="editar<%= dado.id %>">
+                        Editar dado
+                      </div>
+                    </button>
+
+                    <dialog class="mdl-dialog" style="width: 40%; text-align: left;" id="dialog-edit-<%= dado.id %>" >
+                      <form method="post" action="/dados/update">
+                        <h4 class="mdl-dialog__title">Editar Valor</h4>
+                        <div class="mdl-dialog__content">
+                          </br>
+                          <!-- Numeric Textfield with Floating Label -->
+                          <input hidden name="tabela" required value="<%= tabela.id %>">
+                          <input hidden name="id" required value="<%= dado.id %>">
+                          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4" required name="valor" style="width: 90%" value="<%= dado.valor %>">
+                            <label class="mdl-textfield__label" for="sample4">Valor à inserir</label>
+                            <span class="mdl-textfield__error">Insira um numero válido!</span>
+                          </div>
+                        </div>
+                        <div class="mdl-dialog__actions">
+                          <button type="submit" class="mdl-button">Salvar</button>
+                          <button type="button" class="mdl-button close">Cancelar</button>
+                        </div>
+                      </form>
+                    </dialog>
+                    <script>
+                      var dialogedit<%= dado.id %> = document.querySelector('#dialog-edit-<%= dado.id %>');
+                      var editar<%= dado.id %>Button = document.querySelector('#edit<%= dado.id %>');
+                      if (! dialogedit<%= dado.id %>.showModal) {
+                        dialogPolyfill.registerDialog(dialogedit<%= dado.id %>);
+                      }
+                      editar<%= dado.id %>Button.addEventListener('click', function() {
+                        dialogedit<%= dado.id %>.showModal();
+                      });
+                      dialogedit<%= dado.id %>.querySelector('.close').addEventListener('click', function() {
+                        dialogedit<%= dado.id %>.close();
+                      });
+                    </script>
+
+                  </td>
+                  <td>
+                    <button id="excluir<%= dado.id %>" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+                      <i class="material-icons">delete</i>
+                      <div class="mdl-tooltip mdl-tooltip--large" for="excluir<%= dado.id %>">
+                        Excluir Dado
+                      </div>
+                    </button>
+
+                    <dialog class="mdl-dialog" style="text-align: left;" id="dialog-destroy-<%= dado.id %>" >
+                      <form method="post" action="/dados/destroy/<%= dado.id %>">
+                        <h4 class="mdl-dialog__title">Excluir Tabela</h4>
+                        <div class="mdl-dialog__content">
+                          <p>Deseja realmente excluir este dado?</p>
+                        </div>
+                        <div class="mdl-dialog__actions">
+                          <button type="submit" class="mdl-button">Sim</button>
+                          <button type="button" class="mdl-button close">Cancelar</button>
+                        </div>
+                      </form>
+                    </dialog>
+                    <script>
+                      var dialogdestroy<%= dado.id %> = document.querySelector('#dialog-destroy-<%= dado.id %>');
+                      var excluir<%= dado.id %>Button = document.querySelector('#excluir<%= dado.id %>');
+                      if (! dialogdestroy<%= dado.id %>.showModal) {
+                        dialogPolyfill.registerDialog(dialogdestroy<%= dado.id %>);
+                      }
+                      excluir<%= dado.id %>Button.addEventListener('click', function() {
+                        dialogdestroy<%= dado.id %>.showModal();
+                      });
+                      dialogdestroy<%= dado.id %>.querySelector('.close').addEventListener('click', function() {
+                        dialogdestroy<%= dado.id %>.close();
+                      });
+                    </script>
+
+                  </td>
+                </tr>
+                <%})%>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      <div class="snippet-demo-padding"></div>
+    </div>
+  </div>
+</div>
+
+<dialog class="mdl-dialog" style="width: 40%" id="dialog-add">
+  <form method="post" action="/dados/create">
+    <h4 class="mdl-dialog__title">Adicionar Valor</h4>
+    <div class="mdl-dialog__content">
+      </br>
+      <!-- Numeric Textfield with Floating Label -->
+      <input hidden name="tabela" required value="<%= tabela.id %>">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4" required name="valor" style="width: 90%">
+        <label class="mdl-textfield__label" for="sample4">Valor à inserir</label>
+        <span class="mdl-textfield__error">Insira um numero válido!</span>
+      </div>
+    </div>
+    <div class="mdl-dialog__actions">
+      <button type="submit" class="mdl-button">Salvar</button>
+      <button type="button" class="mdl-button close">Cancelar</button>
+    </div>
+  </form>
+</dialog>
+<script>
+  var dialog = document.querySelector('#dialog-add');
+  var showDialogButton = document.querySelector('#show-dialog');
+  if (! dialog.showModal) {
+    dialogPolyfill.registerDialog(dialog);
+  }
+  showDialogButton.addEventListener('click', function() {
+    dialog.showModal();
+  });
+  dialog.querySelector('.close').addEventListener('click', function() {
+    dialog.close();
+  });
+</script>
