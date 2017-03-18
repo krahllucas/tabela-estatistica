@@ -19,7 +19,7 @@ module.exports = {
 				var menor = Math.min.apply(null, dadosArray );
 				var at = maior - menor;
 				var n = dadosArray.length;
-				var i = Math.round(1 + (3.3 * Math.log10(n)));
+				var i = Math.ceil(1 + (3.3 * Math.log10(n)));
 				var h = Math.round(at / i);
 
 				console.log(maior);
