@@ -1,0 +1,53 @@
+<div class="mdl-cell mdl-cell--12-col" align="center">
+  <div class="docs-text-styling component-title">
+    <table width="60%">
+      <tr>
+        <td><h3>Tabela: <%=tabela.nome%> - Cadastro de Dados</h3></td>
+        <td align="right">
+          <button id="show-dialog" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
+            <i class="material-icons">add</i>
+            <div class="mdl-tooltip mdl-tooltip--large" for="show-dialog">
+              Nova dado
+            </div>
+          </button>
+          <!-- Large Tooltip -->
+        </td>
+      </tr>
+    </table>
+    
+  <div class="snippet-demos">
+      <div class="snippet-demo-padding"></div>
+        <div class="snippet-demo">
+          <div class="snippet-demo-container demo-data-table demo-data-table__data-table">
+            <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp is-upgraded" data-upgraded=",MaterialDataTable" width="60%">
+              <thead>
+                <tr>
+                  <th>i</th>
+                  <th>Intervalo</th>
+                  <th>Xi</th>
+                  <th>fi</th>
+                  <th>fri</th>
+                  <th>Fi</th>
+                  <th>Fri</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% _.each(linhas, function(linha){ %>
+                <tr>
+                  <td><%= linha.i %></td>
+                  <td><%= linha.intervalo %></td>
+                  <td><%= linha.Xi %></td>
+                  <td><%= linha.fi %></td>
+                  <td><%= linha.fri %></td>
+                  <td><%= linha.Fi %></td>
+                  <td><%= linha.Fri %></td>
+                </tr>
+                <%})%>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      <div class="snippet-demo-padding"></div>
+    </div>
+  </div>
+</div>
